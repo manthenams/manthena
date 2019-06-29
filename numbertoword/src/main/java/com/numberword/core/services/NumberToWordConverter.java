@@ -1,4 +1,4 @@
-package com.numberword.core.services;;
+package com.numberword.core.services;
 
 import java.util.Scanner;
 import java.util.Scanner;
