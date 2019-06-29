@@ -1,11 +1,24 @@
-package com.numberword.core.services;;
+package com.numberword.core.services;
 
 
 public class ConvertServiceImpl implements ConvertInterface {
+	//Singleton object creation
+	private static ConvertServiceImpl instance;  
+	 private ConvertServiceImpl(){
+	   if(instance != null){
+		//throw new Exception("Object already created oops ...!");
+	   }
+	 }  
 
+	 public static ConvertServiceImpl getInstance(){ 
+	  if(instance == null){  
+	     instance=new ConvertServiceImpl();
+	   } 
+	  return instance;  
+	 }  
     
     @Override
-    	private String numberToWord(int number) {
+    	public String numberToWord(int number) {
                 // variable to hold string representation of number 
                 String words = "";
 		String unitsArray[] = { "zero", "one", "two", "three", "four", "five", "six", 
@@ -18,6 +31,7 @@ public class ConvertServiceImpl implements ConvertInterface {
 		if (number == 0) {
 			return "zero";
 		}
+		try {
 		// add minus before conversion if the number is less than 0
 		if (number < 0) { 
                         // convert the number to a string
@@ -56,7 +70,9 @@ public class ConvertServiceImpl implements ConvertInterface {
                             }  
 			}
 		}
- 
+ 		} catch (Exception e) {
+			System.out.println("Got some exception");
+		}
 		return words;
 	}
 
